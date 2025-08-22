@@ -25,7 +25,7 @@ class PostsFactory extends Factory
             'title' => fake()->sentence(),
             'author' => fake()->name(),
             'slug' => Str::slug(fake()->sentence()),
-            'body' => fake()->text(),
+            'body' => fake()->realTextBetween(600, 1800),
         ];
     }
 }
