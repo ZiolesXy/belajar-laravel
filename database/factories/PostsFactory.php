@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Posts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
@@ -25,6 +26,7 @@ class PostsFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'author_id' => User::factory(),
+            'category_id' => Category::factory(),
             'slug' => Str::slug(fake()->sentence()),
             'body' => fake()->realTextBetween(600, 1800),
         ];
