@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Posts;
 use App\Http\Controllers\MenuControler;
 use Illuminate\Support\Arr;
@@ -20,6 +21,11 @@ Route::get('/posts', function () {
 Route::get('/posts/{posts:slug}', function(Posts $posts) {
     // $post = Posts::find($id);
     return view('post', ['title' => 'Single Post', 'post' => $posts]);
+});
+
+Route::get('/author/{user}', function(User $user) {
+    // $post = Posts::find($id);
+    return view('posts', ['title' => 'Arcticles by ' . $user->name, 'posts' => $user->posts]);
 });
 
 Route::get('/contact', function () {
