@@ -31,7 +31,7 @@ Route::get('/author/{user:username}', function(User $user) {
 
 Route::get('/categories/{category:slug}', function(Category $category) {
     // $post = Posts::find($id);
-    return view('posts', ['title' => 'Articles in :  ' . $category->name, 'posts' => $category->posts]);
+    return view('posts', ['title' => 'Category in : ' . $category->name, 'posts' => $category->posts]);
 });
 
 Route::get('/contact', function () {
