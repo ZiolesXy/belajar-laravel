@@ -25,10 +25,16 @@ class DatabaseSeeder extends Seeder
         //     'author_id' => 1,
         // ]);
 
-        $this->call([CategorySeeder::class, UserSeeder::class]);
-        Posts::factory(100)->recycle([
-            Category::all(),
-            User::all(),
-        ])->create();
+        // $this->call([CategorySeeder::class, UserSeeder::class]);
+        // Posts::factory(100)->recycle([
+        //     Category::all(),
+        //     User::all(),
+        // ])->create();
+
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            PostSeeder::class,
+        ]);
     }
 }

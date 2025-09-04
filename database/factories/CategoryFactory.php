@@ -18,8 +18,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->sentence(rand(1,2), false),
-            'slug' => Str::slug(fake()->sentence(rand(1,2), false)),
+            'name' => fake()->sentence(rand(2,3), false),
+            'slug' => Str::slug(fake()->sentence(rand(2,3), false)),
         ];
     }
 }
