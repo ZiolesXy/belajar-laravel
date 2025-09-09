@@ -16,7 +16,9 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Post', 'posts'=> Posts::all()]);
+    // $posts = Posts::with(['author', 'category'])->latest()->get();
+    $posts = Posts::all();
+    return view('posts', ['title' => 'Post', 'posts'=> $posts]);
 });
 
 Route::get('/posts/{posts:slug}', function(Posts $posts) {
@@ -25,12 +27,12 @@ Route::get('/posts/{posts:slug}', function(Posts $posts) {
 });
 
 Route::get('/author/{user:username}', function(User $user) {
-    // $post = Posts::find($id);
+    // $posts = $user->posts->load('category', 'author');
     return view('posts', ['title' => count($user->posts) . ' Arcticles by ' . $user->name, 'posts' => $user->posts]);
 });
 
 Route::get('/categories/{category:slug}', function(Category $category) {
-    // $post = Posts::find($id);
+    // $posts = $category->posts->load('category', 'author');
     return view('posts', ['title' => 'Category in : ' . $category->name, 'posts' => $category->posts]);
 });
 
