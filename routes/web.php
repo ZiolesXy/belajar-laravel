@@ -16,18 +16,14 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    // $posts = Posts::with(['author', 'category'])->latest()->get();
-    $posts = Posts::all();
-    return view('posts', ['title' => 'Post', 'posts'=> $posts]);
+    return view('posts', ['title' => 'Post', 'posts'=> Posts::filter(request(['search', 'category', 'author']))->latest()->get()]);
 });
 
 Route::get('/posts/{posts:slug}', function(Posts $posts) {
-    // $post = Posts::find($id);
     return view('post', ['title' => 'Single Post', 'post' => $posts]);
 });
 
 Route::get('/author/{user:username}', function(User $user) {
-    // $posts = $user->posts->load('category', 'author');
     return view('posts', ['title' => count($user->posts) . ' Arcticles by ' . $user->name, 'posts' => $user->posts]);
 });
 
